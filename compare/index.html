@@ -77,7 +77,7 @@ footer{padding-block:10px 40px;font-size:.78rem;color:var(--muted)}
 <div class="bar"><div class="wrap"><h1>Ценник ↔ картинка</h1><span>Строймаркет, Молодёжная 4 · 37 позиций с точной ценой · съёмка 2 ноября 2026</span></div></div>
 <main class="wrap">
 <div class="legend">
-  <div><b>1 · Сгенерировано</b>Картинка для карточки в Яндекс Картах: сам предмет без упаковки и этикеток, белый фон. На растворителе и двух банках русские надписи нанесены поверх.</div>
+  <div><b>1 · Карточка</b>Картинка для карточки в Яндекс Картах: сам предмет без упаковки и этикеток, белый фон. На растворителе и двух банках русские надписи нанесены поверх.</div>
   <div><b>2 · Ценник с полки</b>Вырезка из вашего снимка: товар и его ценник. По ней проверяется цена и что это тот же товар.</div>
   <div><b>3 · Снимок полки</b>Исходное фото, с которого сделана вырезка. Нажмите, чтобы открыть крупно.</div>
 </div>
@@ -98,7 +98,7 @@ function item(p){
   const seen=p.seen?`на ценнике: ${p.seen}${p.unit==="кг"?" ₽ / 100 г":" ₽"}`:"ценник не прочитан";
   return `<article class="item" id="${p.id}">
   <div class="head"><span class="sku">${p.id} · ${p.cat}</span><h3>${p.name}</h3><span class="tag">${fmt(p.price)} ₽${p.unit!=="шт"?`<small>/ ${p.unit}</small>`:""}</span>${p.conf!=="high"?`<span class="pill ${cc}">${ct}</span>`:""}${p.mismatch?`<span class="pill bad">расходится</span>`:""}</div>
-  <div class="panes">${pane("gen",`../img/${p.id}.jpg`,"1 · Сгенерировано",p.regen==="regenerated"?"переделано по полке":p.regen==="kept"?"оставлено, совпадало":"1024×1024")}${pane("tag",p.tag?`tag/${p.id}.jpg`:"","2 · Ценник с полки",seen)}${pane("shelf",`shelf/${p.photo}.jpg`,"3 · Снимок полки",p.file)}</div>
+  <div class="panes">${pane("gen",`../img/${p.id}.jpg`,"1 · Карточка",p.regen==="regenerated"?"переделано по полке":p.regen==="kept"?"оставлено, совпадало":"1024×1024")}${pane("tag",p.tag?`tag/${p.id}.jpg`:"","2 · Ценник с полки",seen)}${pane("shelf",`shelf/${p.photo}.jpg`,"3 · Снимок полки",p.file)}</div>
   ${p.note||p.residual?`<div class="note">${p.mismatch?"<b>Проверить: </b>":""}${p.note}${p.residual?` <span class="res">Осталось от картинки: ${p.residual}</span>`:""}</div>`:""}</article>`}
 function render(){
   const cats=["Все",...[...new Set(P.map(p=>p.cat))]];
